@@ -1,0 +1,144 @@
+.task-list-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 12px;
+  margin: 1rem;
+}
+
+.task-item {
+  background: linear-gradient(135deg, #ffffff 0%, #f0f4f8 100%);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.task-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
+  background-size: 200% 100%;
+  animation: gradient 3s ease infinite;
+}
+
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+}
+
+.task-item:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.task-item p:first-child {
+  font-weight: bold;
+  color: #ff6b6b;
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+  display: inline-block;
+  background: #ffe5e5;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+}
+
+.task-item h3 {
+  margin: 1rem 0 0.5rem 0;
+  color: #2c3e50;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.task-item p:last-child {
+  color: #555;
+  font-size: 0.95rem;
+  margin: 0.5rem 0 0 0;
+  line-height: 1.5;
+}
+
+/* new header and action styles */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.badge {
+  background: #ff6b6b;
+  color: #fff;
+  padding: 0.4rem 0.7rem;
+  border-radius: 50%;
+  font-weight: bold;
+  min-width: 2rem;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.description {
+  color: #555;
+  font-size: 0.95rem;
+  margin: 0.5rem 0;
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.update-btn {
+  background: #45b7d1;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+}
+
+.update-btn:hover {
+  background: #3a99b0;
+}
+
+.delete-icon {
+  font-size: 1.4rem;
+  color: #ff6b6b;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
+}
+
+.delete-icon:hover {
+  color: #e04848;
+  transform: scale(1.1);
+}
+
+/* subtle fade-in when cards appear */
+.task-item {
+  opacity: 0;
+  animation: fadeIn 0.6s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
