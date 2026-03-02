@@ -14,7 +14,7 @@ const port = 5000;
 app.use(e.json());
 app.use(cors(
     {
-        origin: "http://localhost:5173",
+        origin: "https://todo-app-mern-app.vercel.app",
         credentials: true
     }
 ));
