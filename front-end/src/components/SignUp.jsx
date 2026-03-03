@@ -22,6 +22,7 @@ const SignUp = () => {
         const result = await response.json()
         if(result.success){
         document.cookie = `token=${result.token}`
+        localStorage.setItem('token', result.token)
         //localStorage.setItem('signup',signupData.email)
         navigate('/login')
     }

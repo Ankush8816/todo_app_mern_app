@@ -26,11 +26,11 @@ const Login = () => {
                 const result = await response.json()
                 console.log(result)
                 if (result.success) {
-                    document.cookie = `token=${result.token}`
-                    localStorage.setItem('login',loginData.email)
-                    window.dispatchEvent(new Event("LocalStorageChanged"))
-                    
-                    Navigate('/')
+                  document.cookie = `token=${result.token}`
+                  localStorage.setItem('token', result.token)
+                  localStorage.setItem('login',loginData.email)
+                  window.dispatchEvent(new Event("LocalStorageChanged"))
+                  Navigate('/')
                 }
                 else{
                     alert("Invalid credentials...user not found") 
