@@ -100,6 +100,17 @@ app.post("/login", async (req, res) => {
     }
 
     jwt.sign(existingUser, process.env.JWT_SECRET, (err, token) => {
+
+
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'none',
+        });
+
+
+
+
         if (err) {
             console.error("Error signing JWT", err);
             return res.status(500).send({ error: "Failed to generate token" });
