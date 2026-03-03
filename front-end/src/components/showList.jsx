@@ -19,7 +19,12 @@ const ShowList = () => {
 
     const fetchTask = async () =>{
         const response = await fetch(API.tasks,{
-            credentials: 'include'
+            //credentials: 'include'
+        
+             headers: {
+    Authorization: "Bearer " + localStorage.getItem("token")
+  }
+        
         })
         const fetchData = await response.json()
         console.log(fetchData)

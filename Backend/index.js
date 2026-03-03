@@ -101,12 +101,13 @@ app.post("/login", async (req, res) => {
 
     jwt.sign(existingUser, process.env.JWT_SECRET, (err, token) => {
 
-
-        res.cookie('token', token, {
-            httpOnly: true,
-            secure: true,
-            sameSite: 'none',
-        });
+        const keyy= process.env.JWT_SECRET
+        //console.log("key-",keyy);
+        // res.cookie('token', token, {
+        //     httpOnly: true,
+        //     secure: true,
+        //     sameSite: 'none',
+        // });
 
 
 
@@ -115,23 +116,46 @@ app.post("/login", async (req, res) => {
             console.error("Error signing JWT", err);
             return res.status(500).send({ error: "Failed to generate token" });
         }
-        res.send({"msg": "Login successful","success": "true", "token": token });
+        res.send({"msg": "Login successful","success": "true",  "token": token });
     });
 });
 
 
-//varify token
+//varify token by cookie
+// function verifyToken(req, res, next) {
+//     const token = req.cookies['token'];
+//     jwt.verify(token,process.env.JWT_SECRET, (err, decoded) => {
+//         if (err) {
+//             console.error("Error verifying JWT", err);
+//             return res.status(401).send({ error: "Invalid token" });
+//         }   
+//         req.decoded = decoded;
+//         console.log("Decoded JWT:", decoded);
+//         next();
+//     });
+// }
+
+// varify token by header
+
 function verifyToken(req, res, next) {
-    const token = req.cookies['token'];
-    jwt.verify(token,process.env.JWT_SECRET, (err, decoded) => {
-        if (err) {
-            console.error("Error verifying JWT", err);
-            return res.status(401).send({ error: "Invalid token" });
-        }   
-        req.decoded = decoded;
-        console.log("Decoded JWT:", decoded);
-        next();
-    });
+
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader) {
+    return res.status(401).json({ error: "No token provided" });
+  }
+
+  const token = authHeader.split(" ")[1];
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+
+    if (err) {
+      return res.status(401).json({ error: "Invalid token" });
+    }
+
+    req.user = decoded;
+    next();
+  });
 }
 
 
