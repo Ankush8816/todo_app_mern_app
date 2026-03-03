@@ -79,7 +79,7 @@ app.post("/signup", async (req, res) => {
     const existingUser = await collection.insertOne(userData);
     
 
-    jwt.sign(userData, "secretkey", (err, token) => {
+    jwt.sign(userData, process.env.JWT_SECRET, (err, token) => {
         if (err) {
             console.error("Error signing JWT", err);
             return res.status(500).send({ error: "Failed to generate token" });
@@ -99,7 +99,7 @@ app.post("/login", async (req, res) => {
         return res.status(401).send({ error: "Invalid email or password" });
     }
 
-    jwt.sign(existingUser, "secretkey", (err, token) => {
+    jwt.sign(existingUser, process.env.JWT_SECRET, (err, token) => {
         if (err) {
             console.error("Error signing JWT", err);
             return res.status(500).send({ error: "Failed to generate token" });
@@ -112,7 +112,7 @@ app.post("/login", async (req, res) => {
 //varify token
 function verifyToken(req, res, next) {
     const token = req.cookies['token'];
-    jwt.verify(token,'secretkey', (err, decoded) => {
+    jwt.verify(token,process.env.JWT_SECRET, (err, decoded) => {
         if (err) {
             console.error("Error verifying JWT", err);
             return res.status(401).send({ error: "Invalid token" });
