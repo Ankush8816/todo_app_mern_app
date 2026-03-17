@@ -36,7 +36,8 @@ const UpdateTask = () => {
                          Authorization: "Bearer " + localStorage.getItem("token")
                     }
                 });
-                navigate('/')
+            if(responce.ok){
+                navigate('/')}
         }
         
   return (
