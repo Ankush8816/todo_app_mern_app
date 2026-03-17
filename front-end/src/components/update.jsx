@@ -17,7 +17,7 @@ const UpdateTask = () => {
     
 
     const getUpdatedData = async() =>{
-        const responce =  await fetch(`${API.UpdateTask}/${id}`,
+        const responce =  await fetch(`${API.tasks}/${id}`,
         {
             credentials: 'include'
         })
@@ -27,7 +27,7 @@ const UpdateTask = () => {
     }    
 
     const handleUpdateTask = async() => {
-        const responce =  await fetch("http://localhost:5000/update-task/",{
+        const responce =  await fetch(`${API.UpdateTask}`,{
                     method: 'PUT',
                      //credentials: 'include',
                     body: JSON.stringify(task),
