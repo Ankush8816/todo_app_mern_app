@@ -8,6 +8,26 @@
   margin: 1rem;
 }
 
+/* Tablet devices */
+@media (max-width: 1024px) {
+  .task-list-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 1.5rem;
+    margin: 0.5rem;
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 640px) {
+  .task-list-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    margin: 0;
+  }
+}
+
 .task-item {
   background: linear-gradient(135deg, #ffffff 0%, #f0f4f8 100%);
   padding: 1.5rem;
@@ -16,6 +36,12 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .task-item {
+    padding: 1rem;
+  }
 }
 
 .task-item::before {
@@ -62,6 +88,13 @@
   font-weight: 600;
 }
 
+@media (max-width: 640px) {
+  .task-item h3 {
+    font-size: 1rem;
+    margin: 0.75rem 0 0.4rem 0;
+  }
+}
+
 .task-item p:last-child {
   color: #555;
   font-size: 0.95rem;
@@ -98,9 +131,14 @@
 .actions {
   display: flex;
   justify-content: flex-end;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+  .actions {
+    justify-content: space-between;
+  }
 }
 
 .update-btn {

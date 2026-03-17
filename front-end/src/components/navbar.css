@@ -53,14 +53,37 @@
 }
 
 /* responsive stacking on small screens */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.75rem 1rem;
+    }
+    .navbar .logo {
+        font-size: 1.25rem;
+    }
+    .navbar .nav-links a,
+    .navbar .nav-links button {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.6rem;
+    }
+}
+
 @media (max-width: 600px) {
     .navbar {
         flex-direction: column;
         align-items: flex-start;
+        gap: 0.5rem;
+    }
+    .navbar .logo {
+        font-size: 1.2rem;
     }
     .navbar .nav-links {
         flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-top: 0.5rem;
+        gap: 0.4rem;
+        width: 100%;
+    }
+    .navbar .nav-links a,
+    .navbar .nav-links button {
+        font-size: 0.85rem;
+        padding: 0.35rem 0.5rem;
     }
 }
