@@ -19,7 +19,11 @@ const UpdateTask = () => {
     const getUpdatedData = async() =>{
         const responce =  await fetch(`${API.tasks}/${id}`,
         {
-            credentials: 'include'
+            //credentials: 'include',
+            headers: {
+                        'Content-Type': 'application/json',
+                         Authorization: "Bearer " + localStorage.getItem("token")
+                    }
         })
         const result = await responce.json()
         console.log(result)
