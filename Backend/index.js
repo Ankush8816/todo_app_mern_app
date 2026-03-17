@@ -12,12 +12,24 @@ import { collectionName, connectToMongo } from './dbConfig.js';
 const app = e();
 const port = 5000;
 app.use(e.json());
-app.use(cors(
-    {
-        origin: "https://todo-app-mern-app.vercel.app",
-        credentials: true
-    }
-));
+const allowedOrigins = [
+    "https://todo-app-mern-app.vercel.app",
+    
+];
+
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) !== -1) {
+            return callback(null, true);
+        }
+        return callback(new Error('CORS not allowed by server'));
+    },
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
+}));
+
 app.use(cookieParser());
 
 // helper alias to make the rest of the code unchanged
@@ -140,6 +152,7 @@ app.post("/login", async (req, res) => {
 function verifyToken(req, res, next) {
 
   const authHeader = req.headers.authorization;
+    console.log('Authorization header:', authHeader);
 
   if (!authHeader) {
     return res.status(401).json({ error: "No token provided" });

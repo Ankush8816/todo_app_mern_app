@@ -17,7 +17,8 @@ const AddTask = () => {
                         credentials: 'include',
                     body: JSON.stringify(task),
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        Authorization: "Bearer " + localStorage.getItem("token")
                     }
                     
                 })
