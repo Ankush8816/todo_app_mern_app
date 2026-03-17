@@ -13,7 +13,7 @@ const app = e();
 const port = 5000;
 app.use(e.json());
 const allowedOrigins = [
-    "https://todo-app-mern-app.vercel.app",
+    "https://todo-app-mern-app.vercel.app"
     
 ];
 
