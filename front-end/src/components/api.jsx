@@ -3,7 +3,7 @@ const BASE_URL = import.meta.env.VITE_BASE_URL;
 export const API = {
   login: `${BASE_URL}/login`,
   SignUp: `${BASE_URL}/signup`,
-  UpdateTask: `${BASE_URL}/update`,
+  UpdateTask: `${BASE_URL}/update-task`,
   tasks: `${BASE_URL}/tasks`,
   addtasks: `${BASE_URL}/add-task`,
   deleteTask: `${BASE_URL}/delete-task`,
