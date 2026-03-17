@@ -14,7 +14,7 @@ const AddTask = () => {
             //console.log(task)
              const response = await fetch(API.addtasks, {
                     method: 'POST',
-                        credentials: 'include',
+                        //credentials: 'include',
                     body: JSON.stringify(task),
                     headers: {
                         'Content-Type': 'application/json',
@@ -22,9 +22,10 @@ const AddTask = () => {
                     }
                     
                 })
-             navigate('/')
-            const result = await response.json()
+             
+            //const result = await response.json()
             //console.log(result)
+            navigate('/')
            
         }
   return (

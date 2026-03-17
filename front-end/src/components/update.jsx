@@ -29,10 +29,11 @@ const UpdateTask = () => {
     const handleUpdateTask = async() => {
         const responce =  await fetch("http://localhost:5000/update-task/",{
                     method: 'PUT',
-                     credentials: 'include',
+                     //credentials: 'include',
                     body: JSON.stringify(task),
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                         Authorization: "Bearer " + localStorage.getItem("token")
                     }
                 });
                 navigate('/')

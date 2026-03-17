@@ -35,7 +35,10 @@ const ShowList = () => {
     const handleDelete = async (id) => {    
         const deletedItem= await fetch(`${API.deleteTask}/${id}`, {
             method: 'DELETE',
-            credentials: 'include'
+            //credentials: 'include',
+             headers: {
+    Authorization: "Bearer " + localStorage.getItem("token")
+  }
         })
         fetchTask()
     }
