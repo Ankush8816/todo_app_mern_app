@@ -7,6 +7,7 @@ export const API = {
   tasks: `${BASE_URL}/tasks`,
   addtasks: `${BASE_URL}/add-task`,
   deleteTask: `${BASE_URL}/delete-task`,
+  getUpdatedTaskData : `${BASE_URL}/get-updated-data`
 };
 
 //http://localhost:5000/add-task

@@ -17,7 +17,7 @@ const UpdateTask = () => {
     
 
     const getUpdatedData = async() =>{
-        const responce =  await fetch(`${API.tasks}/${id}`,
+        const responce =  await fetch(`${API.getUpdatedTaskData}/${id}`,
         {
             //credentials: 'include',
             headers: {

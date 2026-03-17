@@ -64,7 +64,7 @@ app.delete("/delete-task/:id",verifyToken, async (req, res) => {
 });
 
 
-app.get("/update/:id",verifyToken, async (req, res) => {
+app.get("/get-updated-data/:id",verifyToken, async (req, res) => {
     const database = await connectToMongo();
     const taskData = await database.collection(collectionName).findOne({ _id: new objectId(req.params.id) })
     //console.log(taskData);

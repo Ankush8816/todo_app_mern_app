@@ -22,8 +22,8 @@ const ShowList = () => {
             //credentials: 'include'
         
              headers: {
-    Authorization: "Bearer " + localStorage.getItem("token")
-  }
+                Authorization: "Bearer " + localStorage.getItem("token")
+            }
         
         })
         const fetchData = await response.json()
@@ -37,7 +37,7 @@ const ShowList = () => {
             method: 'DELETE',
             //credentials: 'include',
              headers: {
-    Authorization: "Bearer " + localStorage.getItem("token")
+                Authorization: "Bearer " + localStorage.getItem("token")
   }
         })
         fetchTask()
